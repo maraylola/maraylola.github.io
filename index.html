@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>María · maraylola</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF8F5;
+      --beige: #EDE5D8;
+      --sand: #D4C4AE;
+      --camel: #B5956A;
+      --brown: #3D2B1F;
+      --dark: #2C1F14;
+      --muted: #8C7B6E;
+      --white: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--brown);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2.5rem;
+      background: rgba(250, 248, 245, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--beige);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--dark);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--dark); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      padding-top: 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+      gap: 4rem;
+    }
+
+    .hero-text { padding-top: 2rem; }
+
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--camel);
+      letter-spacing: 0.12em;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 400;
+      line-height: 1.12;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--camel);
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 38ch;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background: var(--dark);
+      color: var(--cream);
+      padding: 0.85rem 2.2rem;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+
+    .hero-cta:hover { background: var(--camel); }
+
+    .hero-image-wrap {
+      position: relative;
+      aspect-ratio: 3/4;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--beige);
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      background: rgba(250, 248, 245, 0.92);
+      backdrop-filter: blur(6px);
+      border-radius: 3px;
+      display: flex;
+      padding: 1rem 1.2rem;
+      justify-content: space-around;
+    }
+
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--dark);
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* ABOUT */
+    .about {
+      background: var(--beige);
+      padding: 6rem 2.5rem;
+    }
+
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-label {
+      font-size: 0.75rem;
+      color: var(--camel);
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .about-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .tag {
+      display: inline-block;
+      border: 1px solid var(--sand);
+      color: var(--muted);
+      padding: 0.35rem 0.9rem;
+      font-size: 0.78rem;
+      border-radius: 20px;
+      letter-spacing: 0.03em;
+    }
+
+    .about-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .about-img {
+      border-radius: 3px;
+      overflow: hidden;
+      background: var(--sand);
+      aspect-ratio: 3/4;
+    }
+
+    .about-img:first-child {
+      margin-top: 2rem;
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* PLACEHOLDER IMAGE STYLES */
+    .img-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--sand);
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* NICHOS */
+    .nichos {
+      padding: 6rem 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      color: var(--camel);
+      letter-spacing: 0.12em;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--dark);
+    }
+
+    .nichos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .nicho-card {
+      position: relative;
+      aspect-ratio: 2/3;
+      border-radius: 3px;
+      overflow: hidden;
+      background: var(--beige);
+    }
+
+    .nicho-card:nth-child(2) { margin-top: 2rem; }
+    .nicho-card:nth-child(3) { margin-top: 1rem; }
+
+    .nicho-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .nicho-card:hover img { transform: scale(1.03); }
+
+    .nicho-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.5rem;
+      background: linear-gradient(to top, rgba(44, 31, 20, 0.75) 0%, transparent 100%);
+    }
+
+    .nicho-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--cream);
+      display: block;
+    }
+
+    .nicho-desc {
+      font-size: 0.78rem;
+      color: rgba(250, 248, 245, 0.75);
+      margin-top: 0.3rem;
+    }
+
+    /* COLABORACIONES */
+    .colabs {
+      background: var(--dark);
+      padding: 6rem 2.5rem;
+      color: var(--cream);
+    }
+
+    .colabs-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .colabs .section-label { color: var(--camel); }
+
+    .colabs .section-title {
+      color: var(--cream);
+      margin-bottom: 3rem;
+    }
+
+    .colabs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .colab-item {
+      background: var(--dark);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .colab-item:hover { background: #3a2a1e; }
+
+    .colab-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--sand);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .colab-niche {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    .colabs-note {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* FORMATOS */
+    .formatos {
+      padding: 6rem 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .formatos-list {
+      margin-top: 3rem;
+      border-top: 1px solid var(--beige);
+    }
+
+    .formato-row {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      align-items: center;
+      padding: 1.6rem 0;
+      border-bottom: 1px solid var(--beige);
+      gap: 2rem;
+    }
+
+    .formato-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--dark);
+    }
+
+    .formato-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .formato-tag {
+      text-align: right;
+      font-size: 0.75rem;
+      color: var(--camel);
+      letter-spacing: 0.05em;
+    }
+
+    /* CONTACTO */
+    .contacto {
+      background: var(--beige);
+      padding: 7rem 2.5rem;
+      text-align: center;
+    }
+
+    .contacto-inner { max-width: 560px; margin: 0 auto; }
+
+    .contacto-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .contacto-title em {
+      font-style: italic;
+      color: var(--camel);
+    }
+
+    .contacto-text {
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .contacto-cta {
+      display: inline-block;
+      background: var(--dark);
+      color: var(--cream);
+      padding: 1rem 2.8rem;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s;
+      margin-bottom: 1.2rem;
+    }
+
+    .contacto-cta:hover { background: var(--camel); }
+
+    .contacto-alt {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.8rem;
+    }
+
+    .contacto-alt a {
+      color: var(--camel);
+      text-decoration: none;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--beige);
+    }
+
+    .footer-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--muted);
+    }
+
+    .footer-ig {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-ig:hover { color: var(--camel); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-top: 6rem;
+        padding-bottom: 3rem;
+        gap: 2.5rem;
+      }
+
+      .hero-image-wrap { aspect-ratio: 4/5; }
+      .hero-title { font-size: 2.4rem; }
+
+      .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-visual { grid-template-columns: 1fr 1fr; }
+
+      .nichos-grid { grid-template-columns: 1fr; }
+      .nicho-card:nth-child(2),
+      .nicho-card:nth-child(3) { margin-top: 0; }
+
+      .colabs-grid { grid-template-columns: 1fr 1fr; }
+
+      .formato-row { grid-template-columns: 1fr; gap: 0.3rem; }
+      .formato-tag { text-align: left; }
+
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .nicho-card img { transition: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">maraylola</a>
+    <ul class="nav-links">
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#nichos">Nichos</a></li>
+      <li><a href="#colaboraciones">Colaboraciones</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <span class="hero-eyebrow">Creadora de contenido · España</span>
+      <h1 class="hero-title">Hola,<br>soy <em>María</em></h1>
+      <p class="hero-desc">Comparto mi día a día como mamá primeriza, mi amor por la moda y el hogar desde una mirada auténtica y cercana.</p>
+      <a href="#contacto" class="hero-cta">Hablemos de tu marca</a>
+    </div>
+    <div class="hero-image-wrap">
+      <!-- Sustituye src por tu foto favorita -->
+      <div class="img-placeholder" style="aspect-ratio:3/4; min-height:420px;">
+        <span>Añade aquí tu foto<br>principal</span>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">11k</span>
+          <span class="stat-label">seguidores</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">117k</span>
+          <span class="stat-label">views / mes</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">1.4k</span>
+          <span class="stat-label">publicaciones</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MÍ -->
+  <section class="about" id="sobre-mi">
+    <div class="about-inner">
+      <div>
+        <span class="about-label">Quién soy</span>
+        <h2 class="about-title">Vida real,<br>contenido genuino</h2>
+        <p class="about-text">Soy María, creadora de contenido centrada en la maternidad, la moda cotidiana y la decoración del hogar. Mi cuenta nació de las ganas de compartir mi vida sin filtros: la crianza, los looks de cada día y los rincones de mi casa.</p>
+        <p class="about-text">Mi comunidad de más de 11.000 seguidores me sigue por la cercanía y la autenticidad. No hablo de lujos — hablo de lo que de verdad usamos, compramos y vivimos.</p>
+        <div class="tags">
+          <span class="tag">Mamá primeriza</span>
+          <span class="tag">Slow life</span>
+          <span class="tag">Moda asequible</span>
+          <span class="tag">Deco interior</span>
+          <span class="tag">Lifestyle</span>
+          <span class="tag">España</span>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-img" style="margin-top:2rem">
+          <div class="img-placeholder">Foto 1<br>(outfit / familia)</div>
+        </div>
+        <div class="about-img">
+          <div class="img-placeholder">Foto 2<br>(deco / hogar)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NICHOS -->
+  <section class="nichos" id="nichos">
+    <div class="section-header">
+      <span class="section-label">Contenidos</span>
+      <h2 class="section-title">Tres mundos, una misma voz</h2>
+    </div>
+    <div class="nichos-grid">
+      <div class="nicho-card">
+        <div class="img-placeholder" style="height:100%">Foto maternidad</div>
+        <div class="nicho-overlay">
+          <span class="nicho-name">Maternidad</span>
+          <p class="nicho-desc">El día a día de criar con honestidad</p>
+        </div>
+      </div>
+      <div class="nicho-card">
+        <div class="img-placeholder" style="height:100%">Foto moda</div>
+        <div class="nicho-overlay">
+          <span class="nicho-name">Moda</span>
+          <p class="nicho-desc">Looks accesibles para el día a día</p>
+        </div>
+      </div>
+      <div class="nicho-card">
+        <div class="img-placeholder" style="height:100%">Foto deco</div>
+        <div class="nicho-overlay">
+          <span class="nicho-name">Decoración</span>
+          <p class="nicho-desc">Hogar con carácter y presupuesto real</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLABORACIONES -->
+  <section class="colabs" id="colaboraciones">
+    <div class="colabs-inner">
+      <div class="section-header">
+        <span class="section-label">Han confiado en mí</span>
+        <h2 class="section-title" style="color:var(--cream)">Marcas con las que he trabajado</h2>
+      </div>
+      <div class="colabs-grid">
+        <div class="colab-item">
+          <span class="colab-logo">Marca 1</span>
+          <span class="colab-niche">Moda</span>
+        </div>
+        <div class="colab-item">
+          <span class="colab-logo">Marca 2</span>
+          <span class="colab-niche">Bebé</span>
+        </div>
+        <div class="colab-item">
+          <span class="colab-logo">Marca 3</span>
+          <span class="colab-niche">Deco</span>
+        </div>
+        <div class="colab-item">
+          <span class="colab-logo">Marca 4</span>
+          <span class="colab-niche">Lifestyle</span>
+        </div>
+        <div class="colab-item">
+          <span class="colab-logo">Marca 5</span>
+          <span class="colab-niche">Moda</span>
+        </div>
+        <div class="colab-item">
+          <span class="colab-logo">Marca 6</span>
+          <span class="colab-niche">Hogar</span>
+        </div>
+        <div class="colab-item">
+          <span class="colab-logo">Marca 7</span>
+          <span class="colab-niche">Niños</span>
+        </div>
+        <div class="colab-item">
+          <span class="colab-logo">Marca 8</span>
+          <span class="colab-niche">Belleza</span>
+        </div>
+      </div>
+      <p class="colabs-note">Sustituye los nombres por las marcas reales con las que has colaborado</p>
+    </div>
+  </section>
+
+  <!-- FORMATOS -->
+  <section class="formatos">
+    <div class="section-header">
+      <span class="section-label">Qué ofrezco</span>
+      <h2 class="section-title">Formatos de colaboración</h2>
+    </div>
+    <div class="formatos-list">
+      <div class="formato-row">
+        <span class="formato-name">Reels</span>
+        <span class="formato-desc">Vídeo corto con integración natural del producto, guion y edición incluidos</span>
+        <span class="formato-tag">Mayor alcance</span>
+      </div>
+      <div class="formato-row">
+        <span class="formato-name">Stories</span>
+        <span class="formato-desc">Contenido efímero con enlace directo, ideal para lanzamientos y descuentos</span>
+        <span class="formato-tag">Alta conversión</span>
+      </div>
+      <div class="formato-row">
+        <span class="formato-name">Feed</span>
+        <span class="formato-desc">Publicación de imagen o carrusel que permanece en el perfil con tu producto</span>
+        <span class="formato-tag">Contenido duradero</span>
+      </div>
+      <div class="formato-row">
+        <span class="formato-name">Pack completo</span>
+        <span class="formato-desc">Combinación de varios formatos para una campaña con mayor impacto y visibilidad</span>
+        <span class="formato-tag">Recomendado</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contacto" id="contacto">
+    <div class="contacto-inner">
+      <h2 class="contacto-title">¿Tu marca encaja<br>con mi <em>comunidad</em>?</h2>
+      <p class="contacto-text">Si buscas llegar a madres jóvenes, amantes de la moda cotidiana o del hogar con un mensaje auténtico, estoy aquí. Hablemos sin compromiso.</p>
+      <a href="mailto:tu@email.com" class="contacto-cta">Escribir un email</a>
+      <span class="contacto-alt">
+        O envíame un DM en <a href="https://instagram.com/maraylola" target="_blank">@maraylola</a>
+      </span>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-name">maraylola · María</span>
+    <a href="https://instagram.com/maraylola" target="_blank" class="footer-ig">@maraylola</a>
+  </footer>
+
+</body>
+</html>
